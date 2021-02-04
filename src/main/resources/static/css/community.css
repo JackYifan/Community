@@ -1,0 +1,377 @@
+body {
+    background-color: #efefef;
+    background-image: url("http://cdn.wenmrong.com/grey.png");
+}
+
+.main {
+    margin: 40px 200px;
+    background-color: #fff;
+    box-shadow: 6px 6px 10px grey;
+    min-height: 580px;
+    border-radius: 4px;
+
+}
+
+.main a {
+    text-decoration: none;
+
+}
+
+.btn-publish {
+    float: right;
+    margin-bottom: 15px;
+
+}
+
+.dropdown {
+    margin-top: 0;
+}
+
+.media-object {
+    width: 43px;
+    height: 43px;
+}
+
+.media-body {
+    padding-top: 5px;
+}
+
+media-body.media-heading {
+
+    margin-bottom: -15px;
+    font-size: 22px;
+}
+
+.profile .section {
+    margin-top: 15px;
+}
+
+.community-menu {
+    color: #999;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-left: 26px;
+}
+
+.publish-tag-tab {
+    display: none;
+    margin-top: 10px;
+    margin-top: 10px;
+}
+
+.publish-tag-tab .label-info {
+    white-space: normal;
+    display: inline-block;
+    background-color: #E91E63;
+    font-size: 13px;
+    margin-right: 10px;
+    margin-top: 8px;
+
+}
+
+.label-info {
+    display: inline-block;
+    background-color: #E91E63;
+    font-size: 11px;
+    margin-right: 1px;
+    margin-top: 8px;
+
+}
+
+.comment {
+    margin: 10px 0;
+}
+
+.btn-comment {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.comment-sp {
+    margin-top: 0;
+
+}
+
+.menu {
+    color: #999;
+    margin-top: 5px;
+}
+
+.menu .icon {
+    margin-right: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu .active {
+    color: #499ef3;
+}
+
+.menu .icon:hover {
+    color: #499ef3;
+}
+
+.menu .comment-icon {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.question-tag {
+    margin-right: 5px;
+    background-color: #E91E63;
+}
+
+.question-egg {
+    width: 100%;
+}
+
+.question-related {
+    line-height: 20px;
+    font-size: 12px;
+    margin-left: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+.menu .comment-icon :hover {
+    color: #499ef3;
+}
+
+.menu .comment-icon :hover {
+    color: #499ef3;
+}
+
+.answerNum {
+    margin-left: 1px;
+}
+
+.description_sty {
+    margin-left: -16px;
+
+}
+
+.comments {
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.sub-comments {
+    border-radius: 12px;
+    margin-top: 10px;
+    border: 1px solid #eee;
+    padding-top: 15px;
+    margin-bottom: 13px;
+
+}
+
+.sub-comments .btn {
+    margin: 10px 0;
+}
+
+.headline {
+    font-size: 21px;
+}
+
+.profile-headline {
+    font-size: 21px;
+    margin-top: 1px;
+}
+
+.footer {
+    padding: 10px 25%;
+    color: #666;
+    font-size: 12px;
+
+}
+
+.logo {
+    width: 16%;
+    margin-left: -11px;
+}
+
+.community-name {
+    font-size: 25px;
+    font-style: italic;
+}
+
+.navbar-headers {
+    margin-right: -121px;
+    float: left;
+}
+
+.top-nav {
+    padding-left: 185px;
+    padding-right: 170px;
+    margin-bottom: 0;
+}
+
+.btn-delete {
+    margin-left: 1px;
+    font-size: 12px;
+}
+
+.Log-style {
+    margin-top: 15px;
+    margin-right: -90px;
+
+}
+
+.Log-style a {
+    color: #777;
+    text-decoration: none;
+}
+
+.question-history {
+    padding: 15px;
+    margin-top: -15px;
+}
+
+.history-head {
+    margin-top: -1px;
+}
+
+.glyphicon-hourglass {
+    font-size: 17px;
+}
+
+.glyphicon-grain {
+    font-size: 17px;
+}
+
+.Log-font {
+    margin-right: 11px;
+}
+
+.AliLogo-box {
+    margin-top: 15px;
+    margin-right: 18px;
+}
+
+.AliLogo-box .navbar_ali_icon {
+    font-size: 20px;
+}
+
+.AliLogo-box a {
+    color: #777;
+    text-decoration: none;
+}
+
+.question-AliLogo .question_ali_icon {
+    font-size: 25px;
+}
+
+.question-AliLogo {
+    margin-top: 11px;
+}
+
+.page-left {
+    border-right: 1px solid #D2D2D2;
+}
+
+.login-page {
+    width: 714px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+}
+
+.page-right-line {
+    width: 88%;
+}
+
+.page-left .index_ali_icon {
+    font-size: 22px;
+}
+
+.hot_tag .tag_ali_icon {
+    font-size: 32px;
+}
+
+.hot-tag-list {
+    word-wrap: break-word;
+    margin-left: -8px;
+}
+
+.hot_tag_style {
+    display: inline-block;
+    color: white;
+
+}
+.history_label_info {
+    background-color: black;
+    font-size: 11px;
+    margin-right: 1px;
+    margin-top: 8px;
+}
+
+.history_tag_list {
+    display: inline-block;
+    word-wrap: break-word;
+    margin-left: -8px;
+}
+
+.history_tag_style {
+    color: white;
+
+}
+
+
+
+.question_info {
+    float: right;
+}
+
+.person {
+    background-color: #eee;
+}
+
+.person-info-image {
+    background-image: url("http://cdn.wenmrong.com/black.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+}
+
+.person-info-main {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.person-info {
+    display: flex;
+    margin: 0 20px 24px;
+}
+
+.person-avatar {
+    margin-top: -25px;
+}
+
+.person-avatar img {
+    width: 160px;
+    height: 160px;
+}
+
+.person-content {
+    margin: 10px 30px;
+}
+.profile_form {
+    margin-left: 11px;
+}
+.hot_question_logo {
+    color: #E91E63;
+}
+.starDiv .glyphicon-star {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.starDiv .active {
+    color: #E91E63;
+}
+.starDiv .question-AliLogo .active {
+    color: #E91E63;
+}
