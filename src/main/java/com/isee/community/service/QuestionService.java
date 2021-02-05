@@ -104,11 +104,24 @@ public class QuestionService {
             //新建
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
+            question.setViewCount(0);
+            question.setLikeCount(0);
+            question.setCommentCount(0);
             questionMapper.create(question);
         }else{
             //只需要修改修改的时间
             question.setGmtModified(question.getGmtCreate());
             questionMapper.update(question);
         }
+    }
+
+
+    /**
+     * 高并发的时候可能出现问题
+     * @param id
+     */
+    public void increaseView(Long id) {
+        Question question = questionMapper.getById(id);
+        questionMapper.updateViewCount(question);
     }
 }

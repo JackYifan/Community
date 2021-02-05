@@ -30,4 +30,11 @@ public interface QuestionMapper {
 
     @Update("update question set title=#{title},description=#{description},gmt_modified=#{gmtModified},tag=#{tag} where id=#{id}")
     void update(Question question);
+
+    //注意sql的书写，防止高并发时产生的错误
+    @Update("update question set view_count=view_count+1 where id=#{id}")
+    void updateViewCount(Question question);
+
+    @Update("update question set comment_count=comment_count+1 where id=#{id}")
+    void increaseComment(Question question);
 }
