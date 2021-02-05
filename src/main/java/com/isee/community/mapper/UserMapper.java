@@ -10,11 +10,13 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
 
     //当参数是一个类时可以用#{}获得属性
-    @Insert("insert into user(name,account_id,token,gmt_create,gmt_modified) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified})")
+    @Insert("insert into user(name,account_id,token,gmt_create,gmt_modified,avatar_url) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified},#{avatarUrl})")
     public void insert(User user);
 
     //参数不是类需要用@Param指定
     @Select("select * from user where token = #{token}")
     User findByToken(@Param("token") String token);
 
+    @Select("select * from user where id = #{id}")
+    User findById(@Param("id") Long id);
 }
