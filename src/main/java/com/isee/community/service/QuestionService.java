@@ -3,6 +3,8 @@ package com.isee.community.service;
 import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.isee.community.dto.PaginationDTO;
 import com.isee.community.dto.QuestionDTO;
+import com.isee.community.exception.CustomizeErrorCode;
+import com.isee.community.exception.CustomizeException;
 import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.Question;
@@ -85,6 +87,10 @@ public class QuestionService {
     public QuestionDTO getById(Long id) {
 
         Question question = questionMapper.getById(id);
+        if(question==null){
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
+
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question,questionDTO);
         User user = userMapper.findById((question.getCreator()));
