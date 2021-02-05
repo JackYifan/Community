@@ -5,6 +5,7 @@ import com.isee.community.dto.GithubUser;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.User;
 import com.isee.community.provider.GithubProvider;
+import com.isee.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,9 @@ public class AuthorizeController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code")String code,
                            @RequestParam(name = "state") String state,
@@ -52,10 +56,9 @@ public class AuthorizeController {
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
             user.setAvatarUrl(githubUser.getAvatarUrl());
-            userMapper.insert(user);
+            //accountId是Github中的ID是不会变化的，但每次登录会建立起一次会话需要更新token值
+            userService.createOrUpdate(user);
             //将token加入cookie
             response.addCookie(new Cookie("token",token));
             return "redirect:/";
@@ -63,5 +66,23 @@ public class AuthorizeController {
             //登录失败，重新登录
             return "redirect:/";
         }
+    }
+
+
+    /**
+     * 注销功能
+     * @param request
+     * @param response
+     * @return
+     */
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request,
+                         HttpServletResponse response){
+        request.getSession().removeAttribute("user"); //删除cookie
+        //删除token模拟的session
+        Cookie cookie = new Cookie("token",null); //名字相同会进行覆盖
+        cookie.setMaxAge(0);//立即删除
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 }

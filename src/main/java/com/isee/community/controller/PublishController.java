@@ -1,19 +1,21 @@
 package com.isee.community.controller;
 
+import com.isee.community.dto.QuestionDTO;
 import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.Question;
 import com.isee.community.model.User;
+import com.isee.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.UUID;
 
 @Controller
 public class PublishController {
@@ -22,18 +24,22 @@ public class PublishController {
     private UserMapper userMapper;
 
     @Autowired
-    private QuestionMapper questionMapper;
+    private QuestionService questionService;
 
     @GetMapping("/publish")
     public String publish(){
         return "publish";
     }
 
+    /**
+     * Post请求增加或者修改内容
+     */
     @PostMapping("/publish")
     public String doPublish(
             @RequestParam(value = "title",required = false) String title,
             @RequestParam(value = "description",required = false) String description,
             @RequestParam(value = "tag",required = false) String tag,
+            @RequestParam(value = "id",required = false) Long id,
             HttpServletRequest request,
             Model model) {
         model.addAttribute("title", title);
@@ -75,9 +81,28 @@ public class PublishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setCreator(user.getId());
-        question.setGmtCreate(System.currentTimeMillis());
-        question.setGmtModified(question.getGmtCreate());
-        questionMapper.create(question);
+        question.setId(id);
+        questionService.createOrUpdate(question);
         return "redirect:/";
     }
+
+    /**
+     * get请求回显问题的所有数据
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/publish/{id}")
+    public String edit(@PathVariable(name="id") Long id,
+                       Model model){
+        QuestionDTO question = questionService.getById(id);
+        //回显
+        model.addAttribute("title",question.getTitle());
+        model.addAttribute("description",question.getDescription());
+        model.addAttribute("tag",question.getTag());
+        model.addAttribute("id",question.getId()); //如果是修改的情况有id，新建则没有
+        return "publish";
+    }
+
+
 }
