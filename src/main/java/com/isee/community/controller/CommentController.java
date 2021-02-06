@@ -1,6 +1,6 @@
 package com.isee.community.controller;
 
-import com.isee.community.dto.CommentDTO;
+import com.isee.community.dto.CommentCreateDTO;
 import com.isee.community.dto.ResultDTO;
 import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.model.Comment;
@@ -24,7 +24,7 @@ public class CommentController {
     private CommentService commentService;
     @ResponseBody
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
-    public Object post(@RequestBody CommentDTO commentDTO,
+    public Object post(@RequestBody CommentCreateDTO commentCreateDTO,
                        HttpServletRequest request){
         //验证是否已经登录
         User user = (User) request.getSession().getAttribute("user");
@@ -33,14 +33,14 @@ public class CommentController {
             return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
         }
         //验证问题是否为空
-        if(commentDTO==null|| StringUtils.isEmpty(commentDTO.getContent())){
+        if(commentCreateDTO ==null|| StringUtils.isEmpty(commentCreateDTO.getContent())){
             return ResultDTO.errorOf(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);
         }
         Comment comment = new Comment();
-        BeanUtils.copyProperties(commentDTO,comment);
+        BeanUtils.copyProperties(commentCreateDTO,comment);
         comment.setGmtModified(System.currentTimeMillis());
         comment.setGmtCreate(System.currentTimeMillis());
-        comment.setCommentator(1);
+        comment.setCommentator(user.getId());
         comment.setLikeCount(0L);
         commentService.insert(comment);
         return ResultDTO.ok();

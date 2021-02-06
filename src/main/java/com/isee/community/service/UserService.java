@@ -22,7 +22,7 @@ public class UserService {
         }else{
             //若老用户的信息在github中有变化则插入到相应的行中，id不会变化
             dbUser.setGmtModified(System.currentTimeMillis());
-            dbUser.setAvatarUrl(user.getAvatarUrl());
+            //dbUser.setAvatarUrl(user.getAvatarUrl());
             dbUser.setName(user.getName());
             dbUser.setToken(user.getToken());
             userMapper.update(dbUser);
