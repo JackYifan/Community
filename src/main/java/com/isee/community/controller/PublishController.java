@@ -1,11 +1,13 @@
 package com.isee.community.controller;
 
+import com.isee.community.cache.TagCache;
 import com.isee.community.dto.QuestionDTO;
 import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.Question;
 import com.isee.community.model.User;
 import com.isee.community.service.QuestionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +29,8 @@ public class PublishController {
     private QuestionService questionService;
 
     @GetMapping("/publish")
-    public String publish(){
+    public String publish(Model model){
+        model.addAttribute("tags",TagCache.get());
         return "publish";
     }
 
@@ -45,6 +48,7 @@ public class PublishController {
         model.addAttribute("title", title);
         model.addAttribute("description", description);
         model.addAttribute("tag", tag);
+        model.addAttribute("tags",TagCache.get());
         if (title == null || title == "") {
             model.addAttribute("error", "标题为空");
             return "publish";
@@ -57,6 +61,14 @@ public class PublishController {
             model.addAttribute("error", "标签为空");
             return "publish";
         }
+        //验证tag是否合法
+        String invalid = TagCache.filterInvalid(tag);
+        if(StringUtils.isNotBlank(invalid)){
+            model.addAttribute("error","输入非法标签："+invalid);
+            return "publish";
+        }
+
+
         User user = null;
         Cookie[] cookies = request.getCookies();
         if(cookies!=null&&cookies.length!=0) {
@@ -101,6 +113,7 @@ public class PublishController {
         model.addAttribute("description",question.getDescription());
         model.addAttribute("tag",question.getTag());
         model.addAttribute("id",question.getId()); //如果是修改的情况有id，新建则没有
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
