@@ -22,4 +22,10 @@ public interface UserMapper {
 
     @Update("update user set name = #{name},token = #{token},gmt_modified = #{gmtModified},avatar_url = #{avatarUrl} where id = #{id}")
     void update(User dbUser);
+
+    @Select("SELECT id,title,tag FROM question tag \n" +
+            "WHERE\n" +
+            "tag REGEXP 'Springboot|Spring|Java'\n" +
+            "AND id != 102")
+    void selectRelated();
 }

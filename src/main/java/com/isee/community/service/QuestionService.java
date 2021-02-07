@@ -5,16 +5,19 @@ import com.isee.community.dto.PaginationDTO;
 import com.isee.community.dto.QuestionDTO;
 import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.exception.CustomizeException;
+import com.isee.community.mapper.QuestionExtMapper;
 import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.Question;
 import com.isee.community.model.User;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
@@ -23,6 +26,10 @@ public class QuestionService {
     private QuestionMapper questionMapper;
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
+
     /**
      * 查询所有的问题并分页显示
      * @param page 第几页
@@ -123,5 +130,32 @@ public class QuestionService {
     public void increaseView(Long id) {
         Question question = questionMapper.getById(id);
         questionMapper.updateViewCount(question);
+    }
+
+    /**
+     * 查询问题的所有相关问题
+     * @param queryQuestionDTO 传参使用DTO因为包含更多信息，查表用的是Question对象，因为与表项相对应
+     * @return
+     */
+    public List<QuestionDTO> selectRelated(QuestionDTO queryQuestionDTO) {
+        if(StringUtils.isBlank(queryQuestionDTO.getTag())){
+            return new ArrayList<>();
+        }
+        //分割字符串tag
+        String tag = queryQuestionDTO.getTag();
+        String regexTag = tag.replaceAll(",", "|");
+        Question question = new Question();
+        question.setId(queryQuestionDTO.getId());
+        question.setTag(regexTag);
+        List<Question> relatedQuestions = questionExtMapper.selectRelated(question);
+        //将Question封装成QuestionDTO对象
+        List<QuestionDTO> questionDTOS = relatedQuestions.stream()
+                .map(q -> {
+                    QuestionDTO questionDTO = new QuestionDTO();
+                    BeanUtils.copyProperties(q,questionDTO);
+                    return questionDTO;
+                })
+                .collect(Collectors.toList());
+        return questionDTOS;
     }
 }

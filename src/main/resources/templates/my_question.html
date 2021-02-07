@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${question.title}"></title>
@@ -13,87 +13,21 @@
     <script src="/js/moment.js" type="application/javascript"></script>
 </head>
 <body>
-<div th:insert="~{navigation :: nav}"></div>
-<div class="container-fluid main profile">
-    <div class="row">
 
-        <!--左边主要内容-->
+<div th:insert="navigation :: nav"></div>
+
+<div class="container-fluid main">
+    <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <!--正文-->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4 class="question-title"><span th:text="${question.title}"></span></h4>
-                <span class="text-desc">
+            <h2><span th:text="${question.title}"></span></h2>
+            <h4 class="question-title"><span th:text="${question.title}"></span></h4>
+            <span class="text-desc">
                 作者：<span th:text="${question.user.name}"></span> |
                 发布时间：<span th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span> |
                 阅读数： <span th:text="${question.viewCount}"></span>
             </span>
-                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <hr>
 
-                <!--内容-->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <span th:text="${question.description}"></span>
-                </div>
-
-
-<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-header"-->
-<!--                     th:if="${!#lists.isEmpty(#httpServletRequest.getServletContext().getAttribute('HEADER'))}"-->
-<!--                     th:each="ad : ${#httpServletRequest.getServletContext().getAttribute('HEADER')}">-->
-<!--                    <a th:href="${ad.url}" th:text="${ad.title}" target="_blank"-->
-<!--                       style="color: #A00;font-weight: bold;"></a>-->
-<!--                    <img src="/images/hot.png"/>-->
-<!--                </div>-->
-
-
-<!--                &lt;!&ndash;内容&ndash;&gt;-->
-<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view">-->
-<!--                    <textarea style="display:none;" th:text="${question.description}"></textarea>-->
-<!--                </div>-->
-<!--                <script type="text/javascript">-->
-<!--                    $(function () {-->
-<!--                        editormd.markdownToHTML("question-view", {});-->
-<!--                    });-->
-<!--                </script>-->
-
-<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"-->
-<!--                     th:if="${!#lists.isEmpty(#httpServletRequest.getServletContext().getAttribute('FOOTER'))}"-->
-<!--                     th:each="ad : ${#httpServletRequest.getServletContext().getAttribute('FOOTER')}">-->
-<!--                    <a th:href="${ad.url}" th:text="${ad.title}" target="_blank"-->
-<!--                       style="color: #A00;font-weight: bold;"></a>-->
-<!--                </div>-->
-<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="width: 100%;"-->
-<!--                     th:if="${#lists.isEmpty(#httpServletRequest.getServletContext().getAttribute('FOOTER'))}">-->
-<!--                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-<!--                    &lt;!&ndash; 页尾广告 &ndash;&gt;-->
-<!--                    <ins class="adsbygoogle"-->
-<!--                         style="display:block"-->
-<!--                         data-ad-client="ca-pub-9804684553882114"-->
-<!--                         data-ad-slot="4772323686"-->
-<!--                         data-ad-format="auto"-->
-<!--                         data-full-width-responsive="true"></ins>-->
-<!--                    <script>-->
-<!--                        (adsbygoogle = window.adsbygoogle || []).push({});-->
-<!--                    </script>-->
-<!--                </div>-->
-
-                <!--标签-->
-                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <span class="question-tag" th:each="tag : ${question.tag.split(',')}">
-                        <a th:href="@{/(page=1,tag=${tag})}"
-                           th:text="${tag}" class="community-tag"></a>
-                    </span>
-                </div>
-
-                <!--编辑-->
-                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <a th:href="@{'/publish/'+${question.id}}" class="community-menu"
-                       th:if="${session.user != null && session.user.id == question.creator}">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span>
-                    </a>
-                </div>
-                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            </div>
 
             <!--回复-->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -140,6 +74,22 @@
                 </div>
             </div>
 
+            <!--内容-->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view">
+                <textarea style="display:none;" th:text="${question.description}"></textarea>
+            </div>
+
+            <!--编辑-->
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a th:href="@{'/publish/'+${question.id}}" class="community-menu"
+                   th:if="${session.user != null && session.user.id == question.creator}">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span>
+                </a>
+            </div>
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
             <!--回复输入框-->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>
@@ -166,9 +116,11 @@
                 </div>
             </div>
 
+
         </div>
 
-        <!--右边信息块-->
+
+        <!--        右边信息块-->
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>发起人</h4>
@@ -186,30 +138,15 @@
                     </div>
                 </div>
             </div>
-<!--            <div th:insert="~{notice :: notice}"></div>-->
-<!--            <div th:insert="~{side :: side}"></div>-->
-
-<!--            图片-->
+            <!--相关问题-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4>Community</h4>
-                <img class="img-thumbnail question-wechat" src="/images/logo.png" alt="..">
-            </div>
-
-            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-<!--            相关问题-->
-<!--            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>相关问题</h4>
-                <ul class="question-related">
-                    <li th:each="related : ${relatedQuestions}">
-                        <a th:href="@{'/question/'+ ${related.id}}" th:text="${related.title}"></a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
 </div>
-<!--<div th:insert="~{footer :: foot}"></div>-->
+
+
 </body>
 </html>

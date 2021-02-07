@@ -76,7 +76,8 @@ body {
 }
 
 .question-wechat {
-    width: 95%;
+    width: 90px;
+    height: 90px;
 }
 
 .publish-tag-tab {
