@@ -1,21 +1,21 @@
 package com.isee.community.controller;
 
 import com.isee.community.dto.CommentCreateDTO;
+import com.isee.community.dto.CommentDTO;
 import com.isee.community.dto.ResultDTO;
+import com.isee.community.enums.CommentTypeEnum;
 import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.model.Comment;
 import com.isee.community.model.User;
 import com.isee.community.service.CommentService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 //当用JSON传递数据时，可以使用RequestBody自动封装
 @Controller
@@ -29,12 +29,11 @@ public class CommentController {
         //验证是否已经登录
         User user = (User) request.getSession().getAttribute("user");
         if(user==null){
-            ResultDTO.errorOf(2002,"未登录不能进行评论，请先登录");
             return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
         }
-        //验证问题是否为空
-        if(commentCreateDTO ==null|| StringUtils.isEmpty(commentCreateDTO.getContent())){
-            return ResultDTO.errorOf(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);
+        //验证回复是否为空
+        if(commentCreateDTO ==null|| StringUtils.isBlank(commentCreateDTO.getContent())){
+            return ResultDTO.errorOf(CustomizeErrorCode.CONTENT_IS_EMPTY);
         }
         Comment comment = new Comment();
         BeanUtils.copyProperties(commentCreateDTO,comment);
@@ -43,7 +42,17 @@ public class CommentController {
         comment.setCommentator(user.getId());
         comment.setLikeCount(0L);
         commentService.insert(comment);
-        return ResultDTO.ok();
+        return ResultDTO.okOf();
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/comment/{id}",method = RequestMethod.GET)
+    public ResultDTO<List<CommentDTO>> comments(@PathVariable(name = "id")Long id){
+        List<CommentDTO> commentDTOS = commentService.listByTargetId(id, CommentTypeEnum.COMMENT);
+        return ResultDTO.okOf(commentDTOS);
+    }
+
+
+
 
 }

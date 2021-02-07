@@ -1,8 +1,8 @@
 package com.isee.community.controller;
 
-import com.isee.community.dto.CommentCreateDTO;
 import com.isee.community.dto.CommentDTO;
 import com.isee.community.dto.QuestionDTO;
+import com.isee.community.enums.CommentTypeEnum;
 import com.isee.community.service.CommentService;
 import com.isee.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +26,8 @@ public class QuestionController {
     public String question(@PathVariable(name = "id") Long id,Model model){
         //根据id查询question
         QuestionDTO questionDTO = questionService.getById(id);
-        //查出该评论的评论列表
-        List<CommentDTO> comments = commentService.listByQuestionId(id);
+        //查出该问题的评论列表
+        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
         //累加阅读数
         questionService.increaseView(id);
         model.addAttribute("question",questionDTO);

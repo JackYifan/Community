@@ -35,6 +35,7 @@ public class CommentService {
     @Autowired
     private UserMapper userMapper;
 
+
     public void insert(Comment comment) {
         //验证是否有parent_id即问题是否为空
         if(comment.getParentId()==null||comment.getParentId()==0){
@@ -54,6 +55,11 @@ public class CommentService {
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
             commentMapper.insert(comment);
+            //增加评论父结点的评论数
+            Comment parentComment = new Comment();
+            parentComment.setId(comment.getParentId());
+            parentComment.setCommentCount(1);
+            commentMapper.incCommentCount(parentComment);
         }else{
             //回复问题
             Question question = questionMapper.getById(comment.getParentId());
@@ -72,16 +78,19 @@ public class CommentService {
 
     /**
      * 根据问题id查询出评论列表
+     * 按时间倒序
      * @param id 问题id
+     * @param type
      * @return
      */
-    public List<CommentDTO> listByQuestionId(Long id) {
+    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type) {
 
         //查询出comment
         CommentExample commentExample = new CommentExample();
         commentExample.createCriteria()
                 .andParentIdEqualTo(id)
-                .andTypeEqualTo(CommentTypeEnum.QUESTION.getType());
+                .andTypeEqualTo(type.getType());
+        commentExample.setOrderByClause("gmt_create desc");
         List<Comment> comments = commentMapper.selectByExample(commentExample);
         //将comment封装成commentDTO
         if(comments.size()==0){

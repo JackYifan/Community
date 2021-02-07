@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
  * 包括4XX 5XX 的异常
  */
 
-@Controller("/error")
+@Controller
+//@RequestMapping("${server.error.path:${error.path:/error}}")
+@RequestMapping("/error")
 public class CustomizeErrorController implements ErrorController {
 
     /**

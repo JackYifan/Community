@@ -31,11 +31,9 @@ function comment2target(targetId, type, content) {
                 window.location.reload();
             } else {
                 if (response.code == 2003) {
-                    //弹出确认框
                     var isAccepted = confirm(response.message);
-                    //点击确定
                     if (isAccepted) {
-                        window.open("https://github.com/login/oauth/authorize?client_id=541bf8d226524d44930a&redirect_uri=" + document.location.origin + "/callback&scope=user&state=1");
+                        window.open("https://github.com/login/oauth/authorize?client_id=2859958f9f059979ed3a&redirect_uri=" + document.location.origin + "/callback&scope=user&state=1");
                         window.localStorage.setItem("closable", true);
                     }
                 } else {
@@ -137,7 +135,7 @@ function selectTag(e) {
             //即value的前一个和后一个字符都是逗号","或者没有字符时，才说明value是一个独立的标签
             if ((index == 0 || previous.charAt(index - 1) == ",")
                 && (index + value.length == previous.length || previous.charAt(index + value.length) == ",")
-               ) {
+            ) {
                 appear = true;
                 break;
             }
