@@ -22,10 +22,10 @@ public interface QuestionMapper {
     @Select("select count(1) from question where creator=#{userId}")
     Integer countByUserId(@Param("userId") Long userId);
 
-    @Select("select * from question where creator=#{userId} limit #{offset},#{size}")
+    @Select("select * from question where creator=#{userId} ORDER BY gmt_create DESC limit #{offset},#{size}")
     List<Question> listByUserId(@Param("userId") Long userId, @Param("offset") Integer offset,@Param("size") Integer size);
 
-    @Select("select * from question where id = #{id}")
+    @Select("select * from question where id = #{id} ORDER BY gmt_create DESC")
     Question getById(@Param("id") Long id);
 
     @Update("update question set title=#{title},description=#{description},gmt_modified=#{gmtModified},tag=#{tag} where id=#{id}")

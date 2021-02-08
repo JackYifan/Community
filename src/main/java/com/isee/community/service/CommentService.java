@@ -2,15 +2,15 @@ package com.isee.community.service;
 
 import com.isee.community.dto.CommentDTO;
 import com.isee.community.enums.CommentTypeEnum;
+import com.isee.community.enums.NotificationStatusEnum;
+import com.isee.community.enums.NotificationTypeEnum;
 import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.exception.CustomizeException;
 import com.isee.community.mapper.CommentMapper;
+import com.isee.community.mapper.NotificationMapper;
 import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.mapper.UserMapper;
-import com.isee.community.model.Comment;
-import com.isee.community.model.CommentExample;
-import com.isee.community.model.Question;
-import com.isee.community.model.User;
+import com.isee.community.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +35,15 @@ public class CommentService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private NotificationMapper notificationMapper;
 
-    public void insert(Comment comment) {
+    /**
+     *插入评论并发出通知，通知提问者
+     * @param comment
+     * @param commentator 当前用户即评论人
+     */
+    public void insert(Comment comment, User commentator) {
         //验证是否有parent_id即问题是否为空
         if(comment.getParentId()==null||comment.getParentId()==0){
             throw new CustomizeException(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);//抛出的异常会被Advice处理,返回Json信息
@@ -54,25 +61,48 @@ public class CommentService {
             if(dbComment==null){
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
+            //得到对应的问题
+            Question question = questionMapper.getById(dbComment.getParentId());
+            if(question==null){
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
+
             commentMapper.insert(comment);
             //增加评论父结点的评论数
             Comment parentComment = new Comment();
             parentComment.setId(comment.getParentId());
             parentComment.setCommentCount(1);
             commentMapper.incCommentCount(parentComment);
+            //创建通知
+            createNotify(comment, dbComment.getCommentator(),  question.getTitle(),commentator.getName(), NotificationTypeEnum.REPLY_COMMENT,question.getId());
+
         }else{
             //回复问题
             Question question = questionMapper.getById(comment.getParentId());
             if(question==null){
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
-
             //如果插入评论成功而增加评论数失败容易出现错误，要加入事务控制
             commentMapper.insert(comment);
             question.setCommentCount(1);
             questionMapper.increaseComment(question);
+            //创建通知
+            createNotify(comment,question.getCreator(),question.getTitle(),commentator.getName(), NotificationTypeEnum.REPLY_QUESTION,question.getId());
         }
 
+    }
+
+    private void createNotify(Comment comment, Long receiver, String outerTitle, String notifierName, NotificationTypeEnum notificationType,Long outerId) {
+        Notification notification = new Notification();
+        notification.setGmtCreate(System.currentTimeMillis());
+        notification.setType(notificationType.getType());
+        notification.setOuterid(outerId);//该评论的父节点
+        notification.setNotifier(comment.getCommentator());
+        notification.setStatus(NotificationStatusEnum.UNREAD.getStatus());
+        notification.setReceiver(receiver);//此评论的创建者，上面通过查询数据库已经查出
+        notification.setNotifierName(notifierName);
+        notification.setOuterTitle(outerTitle);
+        notificationMapper.insert(notification);
     }
 
 

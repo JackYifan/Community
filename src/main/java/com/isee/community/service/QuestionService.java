@@ -1,6 +1,5 @@
 package com.isee.community.service;
 
-import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.isee.community.dto.PaginationDTO;
 import com.isee.community.dto.QuestionDTO;
 import com.isee.community.exception.CustomizeErrorCode;
@@ -36,7 +35,7 @@ public class QuestionService {
      * @param size 每页有几项
      * @return
      */
-    public PaginationDTO list(Integer page, Integer size){
+    public PaginationDTO<QuestionDTO> list(Integer page, Integer size){
         //查询问题的总数
         Integer totalCount = questionMapper.count();
         //计算总页数
@@ -48,7 +47,7 @@ public class QuestionService {
         Integer offset = size*(page-1); //将页数转换为sql语句中limit的offset
         List<Question> questions = questionMapper.list(offset,size); //查出所有问题
         List<QuestionDTO> questionDTOList = new ArrayList<>();
-        PaginationDTO paginationDTO = new PaginationDTO();
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
         //遍历所有问题并匹配问题提出者
         for(Question question:questions){
             User user = userMapper.findById(question.getCreator());
@@ -59,12 +58,12 @@ public class QuestionService {
         }
         //封装pagination的各项参数
         paginationDTO.setPage(page);
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         paginationDTO.setPagination(totalCount,page,size);
         return paginationDTO;
     }
 
-    public PaginationDTO list(Long userId, Integer page, Integer size) {
+    public PaginationDTO<QuestionDTO> list(Long userId, Integer page, Integer size) {
         //查询问题的总数
         Integer totalCount = questionMapper.countByUserId(userId);
         //计算总页数
@@ -75,7 +74,7 @@ public class QuestionService {
         Integer offset = size*(page-1); //将页数转换为sql语句中limit的offset
         List<Question> questions = questionMapper.listByUserId(userId,offset,size); //查出所有问题
         List<QuestionDTO> questionDTOList = new ArrayList<>();
-        PaginationDTO paginationDTO = new PaginationDTO();
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
         //遍历所有问题并匹配问题提出者
         for(Question question:questions){
             User user = userMapper.findById(question.getCreator());
@@ -86,7 +85,7 @@ public class QuestionService {
         }
         //封装pagination的各项参数
         paginationDTO.setPage(page);
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         paginationDTO.setPagination(totalCount,page,size);
         return paginationDTO;
     }

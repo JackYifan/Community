@@ -29,7 +29,7 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table schema="DB2ADMIN" tableName="comment" domainObjectName="Comment" >
+        <table schema="DB2ADMIN" tableName="notification" domainObjectName="Notification" >
         </table>
 
     </context>
