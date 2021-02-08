@@ -1,0 +1,165 @@
+2021-02-08 21:11:40.188  INFO 14088 --- [restartedMain] com.isee.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-ABECRPPN with PID 14088 (D:\IdeaProjects\community\target\classes started by HONOR in D:\IdeaProjects\community)
+2021-02-08 21:11:40.194  INFO 14088 --- [restartedMain] com.isee.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2021-02-08 21:11:40.311  INFO 14088 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-02-08 21:11:40.311  INFO 14088 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-02-08 21:11:41.649  INFO 14088 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2021-02-08 21:11:41.677  INFO 14088 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-08 21:11:41.677  INFO 14088 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-02-08 21:11:41.793  INFO 14088 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-08 21:11:41.793  INFO 14088 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1481 ms
+2021-02-08 21:11:42.328  INFO 14088 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-08 21:11:42.451  INFO 14088 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-02-08 21:11:42.767  INFO 14088 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-02-08 21:11:42.835  INFO 14088 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2021-02-08 21:11:42.842  INFO 14088 --- [restartedMain] com.isee.community.CommunityApplication  : Started CommunityApplication in 3.166 seconds (JVM running for 4.588)
+2021-02-08 21:14:17.866  INFO 14088 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-02-08 21:14:17.868  INFO 14088 --- [Thread-5] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2021-02-08 21:14:18.330  INFO 14088 --- [restartedMain] com.isee.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-ABECRPPN with PID 14088 (D:\IdeaProjects\community\target\classes started by HONOR in D:\IdeaProjects\community)
+2021-02-08 21:14:18.330  INFO 14088 --- [restartedMain] com.isee.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2021-02-08 21:14:18.764  INFO 14088 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2021-02-08 21:14:18.765  INFO 14088 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-08 21:14:18.766  INFO 14088 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-02-08 21:14:18.791  INFO 14088 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-08 21:14:18.791  INFO 14088 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 459 ms
+2021-02-08 21:14:18.978  INFO 14088 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-08 21:14:19.021  INFO 14088 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-02-08 21:14:19.214  INFO 14088 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-02-08 21:14:19.240  INFO 14088 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2021-02-08 21:14:19.241  INFO 14088 --- [restartedMain] com.isee.community.CommunityApplication  : Started CommunityApplication in 0.942 seconds (JVM running for 160.987)
+2021-02-08 21:14:19.243  INFO 14088 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-02-08 21:15:56.734  INFO 24408 --- [restartedMain] com.isee.community.CommunityApplication  : Starting CommunityApplication on LAPTOP-ABECRPPN with PID 24408 (D:\IdeaProjects\community\target\classes started by HONOR in D:\IdeaProjects\community)
+2021-02-08 21:15:56.739  INFO 24408 --- [restartedMain] com.isee.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2021-02-08 21:15:56.827  INFO 24408 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-02-08 21:15:56.827  INFO 24408 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-02-08 21:15:58.489  INFO 24408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2021-02-08 21:15:58.518  INFO 24408 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-08 21:15:58.518  INFO 24408 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-02-08 21:15:58.653  INFO 24408 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-08 21:15:58.653  INFO 24408 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1825 ms
+2021-02-08 21:15:59.391  INFO 24408 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-08 21:15:59.574  INFO 24408 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-02-08 21:15:59.903  INFO 24408 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-02-08 21:15:59.962  INFO 24408 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2021-02-08 21:15:59.966  INFO 24408 --- [restartedMain] com.isee.community.CommunityApplication  : Started CommunityApplication in 3.755 seconds (JVM running for 5.182)
+2021-02-08 21:16:14.896  INFO 24408 --- [http-nio-8887-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-08 21:16:14.896  INFO 24408 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-08 21:16:14.904  INFO 24408 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2021-02-08 21:16:14.971  INFO 24408 --- [http-nio-8887-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-02-08 21:16:15.097 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:15.119 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:15.141 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:15.532  WARN 24408 --- [http-nio-8887-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [386] milliseconds.
+2021-02-08 21:16:15.567 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:15.568 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:15.573 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:15.593 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.QuestionExtMapper.countBySearch  : ==>  Preparing: select count(*) from question 
+2021-02-08 21:16:15.593 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.QuestionExtMapper.countBySearch  : ==> Parameters: 
+2021-02-08 21:16:15.596 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.QuestionExtMapper.countBySearch  : <==      Total: 1
+2021-02-08 21:16:15.596 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.Q.selectBySearch                 : ==>  Preparing: select * from question order by gmt_create desc limit ?,? 
+2021-02-08 21:16:15.597 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.Q.selectBySearch                 : ==> Parameters: 0(Integer), 5(Integer)
+2021-02-08 21:16:15.601 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.Q.selectBySearch                 : <==      Total: 5
+2021-02-08 21:16:15.602 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==>  Preparing: select * from user where id = ? 
+2021-02-08 21:16:15.603 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==> Parameters: 7(Long)
+2021-02-08 21:16:15.604 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : <==      Total: 1
+2021-02-08 21:16:15.609 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==>  Preparing: select * from user where id = ? 
+2021-02-08 21:16:15.610 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==> Parameters: 7(Long)
+2021-02-08 21:16:15.611 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : <==      Total: 1
+2021-02-08 21:16:15.612 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==>  Preparing: select * from user where id = ? 
+2021-02-08 21:16:15.612 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==> Parameters: 7(Long)
+2021-02-08 21:16:15.613 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : <==      Total: 1
+2021-02-08 21:16:15.614 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==>  Preparing: select * from user where id = ? 
+2021-02-08 21:16:15.614 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==> Parameters: 7(Long)
+2021-02-08 21:16:15.615 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : <==      Total: 1
+2021-02-08 21:16:15.616 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==>  Preparing: select * from user where id = ? 
+2021-02-08 21:16:15.616 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : ==> Parameters: 7(Long)
+2021-02-08 21:16:15.617 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findById         : <==      Total: 1
+2021-02-08 21:16:15.999 DEBUG 24408 --- [http-nio-8887-exec-2] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:15.999 DEBUG 24408 --- [http-nio-8887-exec-2] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.001 DEBUG 24408 --- [http-nio-8887-exec-2] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.002 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.003 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.005 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.006 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.006 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.007 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.008 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.008 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.009 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.010 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.010 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.011 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.012 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.013 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.014 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.015 DEBUG 24408 --- [http-nio-8887-exec-2] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.016 DEBUG 24408 --- [http-nio-8887-exec-2] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.019 DEBUG 24408 --- [http-nio-8887-exec-2] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.020 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.021 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.022 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.022 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.022 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.023 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.024 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.026 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.026 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.027 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.027 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.027 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.027 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.028 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.028 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.051 DEBUG 24408 --- [http-nio-8887-exec-8] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.051 DEBUG 24408 --- [http-nio-8887-exec-8] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.053 DEBUG 24408 --- [http-nio-8887-exec-8] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.055 DEBUG 24408 --- [http-nio-8887-exec-8] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.055 DEBUG 24408 --- [http-nio-8887-exec-8] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.057 DEBUG 24408 --- [http-nio-8887-exec-8] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.405 DEBUG 24408 --- [http-nio-8887-exec-9] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.407 DEBUG 24408 --- [http-nio-8887-exec-9] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.408 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.409 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.409 DEBUG 24408 --- [http-nio-8887-exec-9] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.410 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.411 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.411 DEBUG 24408 --- [http-nio-8887-exec-9] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.411 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.411 DEBUG 24408 --- [http-nio-8887-exec-9] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.413 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.413 DEBUG 24408 --- [http-nio-8887-exec-9] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.414 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.417 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.418 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.420 DEBUG 24408 --- [http-nio-8887-exec-3] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.421 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.422 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.423 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.424 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.425 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.426 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.426 DEBUG 24408 --- [http-nio-8887-exec-1] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.427 DEBUG 24408 --- [http-nio-8887-exec-4] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.434 DEBUG 24408 --- [http-nio-8887-exec-10] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.435 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.435 DEBUG 24408 --- [http-nio-8887-exec-10] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.436 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.438 DEBUG 24408 --- [http-nio-8887-exec-10] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.439 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.440 DEBUG 24408 --- [http-nio-8887-exec-10] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.441 DEBUG 24408 --- [http-nio-8887-exec-10] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.442 DEBUG 24408 --- [http-nio-8887-exec-10] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.446 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.447 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.452 DEBUG 24408 --- [http-nio-8887-exec-6] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.519 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.520 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.524 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.527 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.528 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.531 DEBUG 24408 --- [http-nio-8887-exec-7] c.i.c.m.N.countByExample                 : <==      Total: 1
+2021-02-08 21:16:16.628 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.mapper.UserMapper.findByToken      : ==>  Preparing: select * from user where token = ? 
+2021-02-08 21:16:16.629 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.mapper.UserMapper.findByToken      : ==> Parameters: f0f2e007-5a9c-4754-8d0f-24da52f2ad3c(String)
+2021-02-08 21:16:16.630 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.mapper.UserMapper.findByToken      : <==      Total: 1
+2021-02-08 21:16:16.632 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.m.N.countByExample                 : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-08 21:16:16.633 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.m.N.countByExample                 : ==> Parameters: 7(Long), 0(Integer)
+2021-02-08 21:16:16.634 DEBUG 24408 --- [http-nio-8887-exec-5] c.i.c.m.N.countByExample                 : <==      Total: 1
