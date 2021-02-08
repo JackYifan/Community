@@ -2,6 +2,7 @@ package com.isee.community.service;
 
 import com.isee.community.dto.PaginationDTO;
 import com.isee.community.dto.QuestionDTO;
+import com.isee.community.dto.QuestionQueryDTO;
 import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.exception.CustomizeException;
 import com.isee.community.mapper.QuestionExtMapper;
@@ -31,13 +32,23 @@ public class QuestionService {
 
     /**
      * 查询所有的问题并分页显示
+     *
+     * @param search
      * @param page 第几页
      * @param size 每页有几项
      * @return
      */
-    public PaginationDTO<QuestionDTO> list(Integer page, Integer size){
+    public PaginationDTO<QuestionDTO> list(String search, Integer page, Integer size){
+
+        if(StringUtils.isNotBlank(search)){
+            //分割字符串tag
+            String regexTag = search.replaceAll(" ", "|");
+        }
+
         //查询问题的总数
-        Integer totalCount = questionMapper.count();
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+        questionQueryDTO.setSearch(search);
+        Integer totalCount = questionExtMapper.countBySearch(questionQueryDTO);
         //计算总页数
         Integer totalPage=totalCount/size + (totalCount%size==0?0:1);
 
@@ -45,7 +56,9 @@ public class QuestionService {
         if(page>totalPage) page = totalPage;
         if(page<1) page = 1;
         Integer offset = size*(page-1); //将页数转换为sql语句中limit的offset
-        List<Question> questions = questionMapper.list(offset,size); //查出所有问题
+        questionQueryDTO.setSize(size);
+        questionQueryDTO.setPage(offset);
+        List<Question> questions = questionExtMapper.selectBySearch(questionQueryDTO); //查出所有问题
         List<QuestionDTO> questionDTOList = new ArrayList<>();
         PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
         //遍历所有问题并匹配问题提出者
