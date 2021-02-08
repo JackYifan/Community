@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/community.css">
+    <link rel="stylesheet" href="/css/editormd.min.css">
     <script src="/js/jquery-3.4.1.min.js" type="application/javascript"></script>
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
     <script src="/js/community.js" type="application/javascript"></script>
     <script src="/js/moment.js" type="application/javascript"></script>
+    <script src="/js/editormd.min.js" type="application/javascript"></script>
+
+
 
 <!--    <head th:insert="~{import :: head}"></head>-->
 <!--    <head th:insert="~{import :: markdown}"></head>-->
@@ -32,10 +36,20 @@
                            placeholder="问题标题……"
                            autocomplete="off">
                 </div>
-                <div class="form-group">
-                    <label for="title">问题补充（必填，请参照右侧提示）</label>
-                    <textarea name="description" id="description" cols="30" rows="10" class="form-control" th:text="${description}"></textarea>
+<!--                <div class="form-group">-->
+<!--                    <label for="title">问题补充（必填，请参照右侧提示）</label>-->
+<!--                    <textarea name="description" id="description" cols="30" rows="10" class="form-control" th:text="${description}"></textarea>-->
+<!--                </div>-->
+
+                <div class="form-group" id="question-editor" style="z-index: 2">
+                    <label for="description">问题补充 (必填，请参照右侧提示):</label>
+                    <textarea name="description" id="description" th:text="${description}" style="display:none;"
+                              class="form-control"
+                              cols="30"
+                              rows="10"></textarea>
                 </div>
+
+
                 <script type="text/javascript">
                     $(function () {
                         var editor = editormd("question-editor", {
