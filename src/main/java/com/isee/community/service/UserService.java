@@ -30,6 +30,11 @@ public class UserService {
 
     }
 
+    public User findByName(String name){
+        User user = userMapper.findByUsername(name);
+        return user;
+    }
+
 
 
 }

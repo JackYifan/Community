@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
@@ -86,4 +87,44 @@ public class AuthorizeController {
         response.addCookie(cookie);
         return "redirect:/";
     }
+
+    @PostMapping("/login")
+    public String login(String username,
+                        String password,
+                        HttpServletRequest request,
+                        HttpServletResponse response){
+
+        User user = userService.findByName(username);
+        if(!user.getPassword().equals(password)) {
+            return "error";
+        }
+        String token = UUID.randomUUID().toString();
+        user.setToken(token);
+        userService.createOrUpdate(user);
+        //将token加入cookie
+        response.addCookie(new Cookie("token",token));
+        return "redirect:/";
+    }
+
+    @PostMapping("register")
+    public String register(String username,
+                           String password,
+                           String rpassword,
+                           HttpServletRequest request,
+                           HttpServletResponse response) throws Exception {
+        if(!password.equals(rpassword)){
+            throw new Exception("两次输入的密码不一致");
+        }
+        User user = new User();
+        String token = UUID.randomUUID().toString();
+        user.setToken(token);
+        user.setName(username);
+        user.setPassword(password);
+        user.setAvatarUrl("https://avatarfiles.alphacoders.com/314/314155.jpg");
+        userService.createOrUpdate(user);
+        //将token加入cookie
+        response.addCookie(new Cookie("token",token));
+        return "redirect:/";
+    }
+
 }

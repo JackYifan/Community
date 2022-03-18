@@ -37,21 +37,6 @@
             </span>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-<!--                &lt;!&ndash;内容&ndash;&gt;-->
-<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
-<!--                    <span th:text="${question.description}"></span>-->
-<!--                </div>-->
-
-
-<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-header"-->
-<!--                     th:if="${!#lists.isEmpty(#httpServletRequest.getServletContext().getAttribute('HEADER'))}"-->
-<!--                     th:each="ad : ${#httpServletRequest.getServletContext().getAttribute('HEADER')}">-->
-<!--                    <a th:href="${ad.url}" th:text="${ad.title}" target="_blank"-->
-<!--                       style="color: #A00;font-weight: bold;"></a>-->
-<!--                    <img src="/images/hot.png"/>-->
-<!--                </div>-->
-
-
                 <!--内容-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view">
                     <textarea style="display:none;" th:text="${question.description}"></textarea>
@@ -62,26 +47,6 @@
                     });
                 </script>
 
-<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"-->
-<!--                     th:if="${!#lists.isEmpty(#httpServletRequest.getServletContext().getAttribute('FOOTER'))}"-->
-<!--                     th:each="ad : ${#httpServletRequest.getServletContext().getAttribute('FOOTER')}">-->
-<!--                    <a th:href="${ad.url}" th:text="${ad.title}" target="_blank"-->
-<!--                       style="color: #A00;font-weight: bold;"></a>-->
-<!--                </div>-->
-<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="width: 100%;"-->
-<!--                     th:if="${#lists.isEmpty(#httpServletRequest.getServletContext().getAttribute('FOOTER'))}">-->
-<!--                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-<!--                    &lt;!&ndash; 页尾广告 &ndash;&gt;-->
-<!--                    <ins class="adsbygoogle"-->
-<!--                         style="display:block"-->
-<!--                         data-ad-client="ca-pub-9804684553882114"-->
-<!--                         data-ad-slot="4772323686"-->
-<!--                         data-ad-format="auto"-->
-<!--                         data-full-width-responsive="true"></ins>-->
-<!--                    <script>-->
-<!--                        (adsbygoogle = window.adsbygoogle || []).push({});-->
-<!--                    </script>-->
-<!--                </div>-->
 
                 <!--标签-->
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -109,6 +74,24 @@
                     <span th:text="${question.commentCount}"></span> 个回复
                 </h4>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp">
+
+<!--                <div class="panel panel-default">-->
+<!--                    &lt;!&ndash; Default panel contents &ndash;&gt;-->
+<!--                    <div class="panel-heading">Panel heading</div>-->
+
+<!--                    &lt;!&ndash; Table &ndash;&gt;-->
+<!--                    <table class="table">-->
+<!--                        <tr>-->
+<!--                            <th>Month</th>-->
+<!--                            <th>Savings</th>-->
+<!--                        </tr>-->
+<!--                        <tr th:each="comment : ${comments}">-->
+<!--                            <td th:text="${comment.id}">January</td>-->
+<!--                            <td th:text="${comment.content}">$100</td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+<!--                </div>-->
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comments" th:each="comment : ${comments}">
                     <div class="media">
                         <div class="media-left">

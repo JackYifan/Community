@@ -43,4 +43,14 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/loginpage")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/registerpage")
+    public String register(){
+        return "register";
+    }
+
 }

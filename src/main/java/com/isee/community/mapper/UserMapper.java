@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
 public interface UserMapper {
 
     //当参数是一个类时可以用#{}获得属性
-    @Insert("insert into user(name,account_id,token,gmt_create,gmt_modified,avatar_url) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified},#{avatarUrl})")
+    @Insert("insert into user(name,account_id,token,gmt_create,gmt_modified,avatar_url,password) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified},#{avatarUrl},#{password})")
     public void insert(User user);
 
     //参数不是类需要用@Param指定
@@ -19,6 +19,9 @@ public interface UserMapper {
 
     @Select("select * from user where account_id = #{accountId}")
     User findByAccountId(@Param("accountId") String accountId);
+
+    @Select("select * from user where name = #{name}")
+    User findByUsername(@Param("name") String name);
 
     @Update("update user set name = #{name},token = #{token},gmt_modified = #{gmtModified},avatar_url = #{avatarUrl} where id = #{id}")
     void update(User dbUser);
