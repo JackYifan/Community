@@ -99,7 +99,12 @@
             <artifactId>mybatis-plus-extension</artifactId>
             <version>3.2.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
 
     </dependencies>
