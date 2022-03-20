@@ -1,5 +1,8 @@
 package com.isee.community.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.isee.community.dto.NotificationDTO;
 import com.isee.community.dto.PaginationDTO;
 import com.isee.community.enums.NotificationStatusEnum;
@@ -8,7 +11,6 @@ import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.exception.CustomizeException;
 import com.isee.community.mapper.NotificationMapper;
 import com.isee.community.model.Notification;
-import com.isee.community.model.NotificationExample;
 import com.isee.community.model.User;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
@@ -33,12 +35,12 @@ public class NotificationService {
      */
     public PaginationDTO<NotificationDTO> list(Long userId, Integer page, Integer size) {
         PaginationDTO<NotificationDTO> paginationDTO = new PaginationDTO<>();
+
         //根据userId 查询
-        NotificationExample notificationExample = new NotificationExample();
-        notificationExample.createCriteria()
-                .andReceiverEqualTo(userId);
-        notificationExample.setOrderByClause("gms_create desc");
-        Integer totalCount = (int)notificationMapper.countByExample(notificationExample);
+        Integer totalCount = notificationMapper.selectCount(
+                new QueryWrapper<Notification>().eq("receiver", userId)
+                        .orderByDesc("gmt_create")
+        );
         Integer totalPage;//总页数
         totalPage = totalCount/size+(totalCount%size==0?0:1);
 
@@ -47,14 +49,12 @@ public class NotificationService {
         if(page<0) page = 1;
         paginationDTO.setPagination(totalPage,page,size);
 
-        //计算offset并查询出分页数据
-        Integer offset = size*(page-1);
-        NotificationExample example = new NotificationExample();
-        example.createCriteria()
-                .andReceiverEqualTo(userId);
-        example.setOrderByClause("gmt_create desc");
-        List<Notification> notifications = notificationMapper.selectByExampleWithRowbounds(example, new RowBounds(offset, size));//分页查询
 
+        IPage<Notification> notificationIPage = notificationMapper.selectPage(
+                new Page<>(page, size), new QueryWrapper<Notification>().eq("receiver", userId)
+                        .orderByDesc("gmt_create")
+        );
+        List<Notification> notifications = notificationIPage.getRecords();
         //如果没有数据直接返回
         if(notifications.size()==0){
             return paginationDTO;
@@ -74,18 +74,16 @@ public class NotificationService {
     }
 
     public Long unreadCount(Long userId) {
-        NotificationExample notificationExample = new NotificationExample();
-        notificationExample.createCriteria()
-                .andReceiverEqualTo(userId)
-                .andStatusEqualTo(NotificationStatusEnum.UNREAD.getStatus());
-
-        return notificationMapper.countByExample(notificationExample);
+        Integer count = notificationMapper.selectCount(
+                new QueryWrapper<Notification>().eq("receiver", userId)
+                        .eq("status", NotificationStatusEnum.UNREAD.getStatus())
+        );
+        return Long.valueOf(count);
     }
 
     public NotificationDTO read(Long id, User user) {
-        NotificationExample example = new NotificationExample();
-        example.createCriteria().andIdEqualTo(id);
-        Notification notification = notificationMapper.selectByExample(example).get(0);
+        Notification notification = notificationMapper.selectById(id);
+
         //验证
         if(notification==null){
             throw new CustomizeException(CustomizeErrorCode.NOTIFICATION_NOT_FOUND);
@@ -96,7 +94,7 @@ public class NotificationService {
         }
 
         notification.setStatus(NotificationStatusEnum.READ.getStatus());
-        notificationMapper.updateStatus(notification);
+        notificationMapper.updateById(notification);
 
         NotificationDTO notificationDTO = new NotificationDTO();
         BeanUtils.copyProperties(notification,notificationDTO);

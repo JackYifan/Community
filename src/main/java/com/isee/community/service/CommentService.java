@@ -1,5 +1,6 @@
 package com.isee.community.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.isee.community.dto.CommentDTO;
 import com.isee.community.enums.CommentTypeEnum;
 import com.isee.community.enums.NotificationStatusEnum;
@@ -53,11 +54,8 @@ public class CommentService {
             throw new CustomizeException(CustomizeErrorCode.TYPE_PARAM_WRONG);
         }
         if(comment.getType() == CommentTypeEnum.COMMENT.getType()){
-            CommentExample example = new CommentExample();
-            example.createCriteria().andIdEqualTo(comment.getParentId());
             //回复评论
-            List<Comment> dbComments = commentMapper.selectByExample(example);
-            Comment dbComment = dbComments.get(0);//该评论回复的评论
+            Comment dbComment = commentMapper.selectById(comment.getParentId());//该评论回复的评论
             if(dbComment==null){
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
@@ -114,14 +112,13 @@ public class CommentService {
      * @return
      */
     public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type) {
-
         //查询出comment
-        CommentExample commentExample = new CommentExample();
-        commentExample.createCriteria()
-                .andParentIdEqualTo(id)
-                .andTypeEqualTo(type.getType());
-        commentExample.setOrderByClause("gmt_create desc");
-        List<Comment> comments = commentMapper.selectByExample(commentExample);
+        List<Comment> comments = commentMapper.selectList(
+                new QueryWrapper<Comment>().eq("parent_id", id)
+                        .eq("type", type.getType())
+                        .orderByDesc("gmt_create")
+        );
+
         //将comment封装成commentDTO
         if(comments.size()==0){
             return new ArrayList<>();

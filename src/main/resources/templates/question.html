@@ -74,24 +74,6 @@
                     <span th:text="${question.commentCount}"></span> 个回复
                 </h4>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp">
-
-<!--                <div class="panel panel-default">-->
-<!--                    &lt;!&ndash; Default panel contents &ndash;&gt;-->
-<!--                    <div class="panel-heading">Panel heading</div>-->
-
-<!--                    &lt;!&ndash; Table &ndash;&gt;-->
-<!--                    <table class="table">-->
-<!--                        <tr>-->
-<!--                            <th>Month</th>-->
-<!--                            <th>Savings</th>-->
-<!--                        </tr>-->
-<!--                        <tr th:each="comment : ${comments}">-->
-<!--                            <td th:text="${comment.id}">January</td>-->
-<!--                            <td th:text="${comment.content}">$100</td>-->
-<!--                        </tr>-->
-<!--                    </table>-->
-<!--                </div>-->
-
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comments" th:each="comment : ${comments}">
                     <div class="media">
                         <div class="media-left">
@@ -177,9 +159,6 @@
                     </div>
                 </div>
             </div>
-<!--            <div th:insert="~{notice :: notice}"></div>-->
-<!--            <div th:insert="~{side :: side}"></div>-->
-
 <!--            图片-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
