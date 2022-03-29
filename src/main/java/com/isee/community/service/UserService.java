@@ -1,12 +1,13 @@
 package com.isee.community.service;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserService extends ServiceImpl<UserMapper,User> {
 
     @Autowired
     private UserMapper userMapper;

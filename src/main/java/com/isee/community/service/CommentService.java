@@ -1,6 +1,7 @@
 package com.isee.community.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.isee.community.dto.CommentDTO;
 import com.isee.community.enums.CommentTypeEnum;
 import com.isee.community.enums.NotificationStatusEnum;
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class CommentService {
+public class CommentService extends ServiceImpl<CommentMapper,Comment> {
 
     @Autowired
     private CommentMapper commentMapper;
@@ -90,7 +91,7 @@ public class CommentService {
 
     }
 
-    private void createNotify(Comment comment, Long receiver, String outerTitle, String notifierName, NotificationTypeEnum notificationType,Long outerId) {
+    public void createNotify(Comment comment, Long receiver, String outerTitle, String notifierName, NotificationTypeEnum notificationType,Long outerId) {
         Notification notification = new Notification();
         notification.setGmtCreate(System.currentTimeMillis());
         notification.setType(notificationType.getType());
