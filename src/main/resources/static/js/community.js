@@ -164,7 +164,7 @@ function thumbComments(e) {
 function chat(e) {
     // debugger;
     var userName = e.getAttribute("data-user");
-    window.location.href="http://localhost:8081?user="+userName
+    window.location.href="http://localhost:8082?user="+userName
 
 
 }
