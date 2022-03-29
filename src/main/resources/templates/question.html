@@ -91,13 +91,13 @@
 <!--                                <span class="glyphicon glyphicon-thumbs-up icon"></span>-->
 
                                 <span th:id="${'thumb-'+comment.id}" th:data-id="${comment.id+'/'+session.user.id+'/'+question.id}" onclick="thumbComments(this)" class="thumbComment-icon" th:if="${session.user!=null}">
-                                      <span class="glyphicon glyphicon-thumbs-up"></span>
+                                      <span class="glyphicon glyphicon-thumbs-up icon"></span>
                                       <span id="thumbChildElement" th:text="${comment.likeCount}"></span>
                                  </span>
 
                                 <span th:data-id="${comment.id}"
                                       onclick="collapseComments(this)" class="comment-icon">
-                                    <span class="glyphicon glyphicon-comment"></span>
+                                    <span class="glyphicon glyphicon-comment icon"></span>
                                     <span th:text="${comment.commentCount}"></span>
                                 </span>
                                 <span class="pull-right"
