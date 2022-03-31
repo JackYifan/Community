@@ -3,9 +3,7 @@ package com.isee.community.dto;
 import com.isee.community.model.User;
 import lombok.Data;
 
-/**
- * Created by codedrinker on 2019/6/2.
- */
+
 @Data
 public class CommentDTO {
     private Long id;
@@ -18,4 +16,5 @@ public class CommentDTO {
     private Integer commentCount;
     private String content;
     private User user;
+    private Boolean isLike;
 }

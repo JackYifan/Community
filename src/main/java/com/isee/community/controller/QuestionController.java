@@ -3,8 +3,10 @@ package com.isee.community.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.isee.community.dto.CommentDTO;
 import com.isee.community.dto.QuestionDTO;
+import com.isee.community.dto.ResultDTO;
 import com.isee.community.enums.CommentTypeEnum;
 import com.isee.community.enums.NotificationTypeEnum;
+import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.model.Comment;
 import com.isee.community.model.Thumb;
 import com.isee.community.model.User;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -35,18 +38,20 @@ public class QuestionController {
     private UserService userService;
 
     @GetMapping("/question/{id}")
-    public String question(@PathVariable(name = "id") Long id,Model model){
+    public String question(@PathVariable(name = "id") Long id, Model model, HttpServletRequest request){
+        User currentUser = (User) request.getSession().getAttribute("user");
         //根据id查询question
         QuestionDTO questionDTO = questionService.getById(id);
         //查出该问题的所有相关问题
         List<QuestionDTO> relatedQuestions = questionService.selectRelated(questionDTO);
         //查出该问题的评论列表
-        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
+        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION,currentUser);
         //累加阅读数
         questionService.increaseView(id);
         model.addAttribute("question",questionDTO);
         model.addAttribute("comments",comments);
         model.addAttribute("relatedQuestions",relatedQuestions);
+
         return "question";
     }
 

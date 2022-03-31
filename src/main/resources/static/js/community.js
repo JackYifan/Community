@@ -152,10 +152,12 @@ function thumbComments(e) {
     var thumbId = e.getAttribute("id");
     var url = e.getAttribute("data-id");
     var tags =$("#"+thumbId).children("#thumbChildElement");
-
+    var icon =$("#"+thumbId).children(".glyphicon");
+    console.log(icon)
     $.getJSON("/thumb/" + url ,function(data) {
         //span标签赋值用html,表单一般用val
         tags.html(data);
+        icon.attr('style','color: rgb(212, 106, 64);')
     });
 
 
@@ -164,7 +166,7 @@ function thumbComments(e) {
 function chat(e) {
     // debugger;
     var userName = e.getAttribute("data-user");
-    window.location.href="http://localhost:8082?user="+userName
+    window.location.href="http://47.103.125.27:8082?user="+userName
 
 
 }

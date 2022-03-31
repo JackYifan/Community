@@ -89,7 +89,7 @@
 
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <div style="margin: 10px">
+            <div style="margin: 10px" th:if="${session.user != null}">
                 <button id="chat" th:data-user="${session.user.getName()}" class="btn-primary btn-lg btn" onclick="chat(this)" >聊天室</button>
             </div>
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

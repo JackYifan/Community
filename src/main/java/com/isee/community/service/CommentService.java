@@ -8,10 +8,7 @@ import com.isee.community.enums.NotificationStatusEnum;
 import com.isee.community.enums.NotificationTypeEnum;
 import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.exception.CustomizeException;
-import com.isee.community.mapper.CommentMapper;
-import com.isee.community.mapper.NotificationMapper;
-import com.isee.community.mapper.QuestionMapper;
-import com.isee.community.mapper.UserMapper;
+import com.isee.community.mapper.*;
 import com.isee.community.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,9 +107,10 @@ public class CommentService extends ServiceImpl<CommentMapper,Comment> {
      * 按时间倒序
      * @param id 问题id
      * @param type
+     * @param currentUser
      * @return
      */
-    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type) {
+    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type, User currentUser) {
         //查询出comment
         List<Comment> comments = commentMapper.selectList(
                 new QueryWrapper<Comment>().eq("parent_id", id)
@@ -141,10 +139,19 @@ public class CommentService extends ServiceImpl<CommentMapper,Comment> {
                     CommentDTO commentDTO = new CommentDTO();
                     BeanUtils.copyProperties(comment, commentDTO);
                     commentDTO.setUser(userMap.get(comment.getCommentator()));
+                    Integer hasThumb = 0;
+                    if(currentUser!=null){
+                        hasThumb = thumbMapper.selectCount(new QueryWrapper<Thumb>().eq("user_id", currentUser.getId()).eq("comment_id", comment.getId()));
+                    }
+                    if(hasThumb>=1){
+                        commentDTO.setIsLike(true);
+                    }
                     return commentDTO;
                 }).collect(Collectors.toList());
 
         return commentDTOS;
 
     }
+    @Autowired
+    private ThumbMapper thumbMapper;
 }
