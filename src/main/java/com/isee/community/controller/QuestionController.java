@@ -93,4 +93,25 @@ public class QuestionController {
 
         return String.valueOf(totalCount);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/cancel-thumb/{commentId}/{userId}/{questionId}", method = RequestMethod.GET)
+    public String cancelThumb(@PathVariable(name = "commentId") Long commentId,
+                        @PathVariable(name = "userId") Long userId,
+                        @PathVariable(name = "questionId") Long questionId){
+
+        Thumb thumb = thumbService.getOne(
+                new QueryWrapper<Thumb>().eq("comment_id", commentId)
+                        .eq("user_id", userId)
+        );
+        thumbService.removeById(thumb.getId());
+        int totalCount  = thumbService.count(
+                new QueryWrapper<Thumb>().eq("comment_id", commentId)
+        );
+        //通知
+        Comment comment = commentService.getById(commentId);
+        comment.setLikeCount(Long.valueOf(totalCount));
+        commentService.updateById(comment);
+        return String.valueOf(totalCount);
+    }
 }

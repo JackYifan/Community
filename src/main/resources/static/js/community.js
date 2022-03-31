@@ -153,12 +153,26 @@ function thumbComments(e) {
     var url = e.getAttribute("data-id");
     var tags =$("#"+thumbId).children("#thumbChildElement");
     var icon =$("#"+thumbId).children(".glyphicon");
-    console.log(icon)
-    $.getJSON("/thumb/" + url ,function(data) {
-        //span标签赋值用html,表单一般用val
-        tags.html(data);
-        icon.attr('style','color: rgb(212, 106, 64);')
-    });
+    // console.log(icon)
+    thumbColor = icon.attr('style')
+    // console.log(thumbColor)
+    // debugger
+    if(thumbColor != 'color: rgb(212, 106, 64);'){
+        $.getJSON("/thumb/" + url ,function(data) {
+            //thumb up
+            console.log('thumb up')
+            tags.html(data);
+            icon.attr('style','color: rgb(212, 106, 64);')
+        });
+    }else{
+        $.getJSON("/cancel-thumb/" + url ,function(data) {
+            console.log('cancel')
+            tags.html(data);
+            icon.removeAttr('style')
+
+        });
+    }
+
 
 
 }
