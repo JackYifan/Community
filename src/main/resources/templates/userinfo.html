@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>个人信息</title>
+    <!--    <head th:insert="~{import :: head}"></head>-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/js/jquery-3.4.1.min.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/community.js" type="application/javascript"></script>
+</head>
+<body>
+    <div th:insert="~{navigation :: nav}"></div>
+    <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-4 col-md-offset-4">
+            <img th:src="${user.avatarUrl}" alt="/images/default-avatar.png" class="img-circle" style="width: 140px; height: 140px;">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <form enctype="multipart/form-data" action="/updateInfo" method="post">
+                <div class="form-group">
+                    <label for="username">昵称</label>
+                    <input class="form-control" id="username" name="username" th:value="${user.name}">
+                </div>
+                <div class="form-group">
+                    <label for="bio">个人简介</label>
+                    <textarea class="form-control" rows="3" name="bio" id="bio" th:text="${user.bio}"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="avatar">上传头像</label>
+                    <input type="file" id="avatar" name="avatar">
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
