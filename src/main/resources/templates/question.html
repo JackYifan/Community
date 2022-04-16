@@ -77,7 +77,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comments" th:each="comment : ${comments}">
                     <div class="media">
                         <div class="media-left">
-                            <a href="#">
+                            <a th:href="${'/user/'+comment.user.id}">
                                 <img class="media-object img-rounded"
                                      th:src="${comment.user.avatarUrl}">
                             </a>
@@ -153,7 +153,7 @@
                 <h4>发起人</h4>
                 <div class="media">
                     <div class="media-left">
-                        <a href="#">
+                        <a th:href="${'/user/'+question.user.id}">
                             <img class="media-object img-rounded"
                                  th:src="${question.user.avatarUrl}">
                         </a>

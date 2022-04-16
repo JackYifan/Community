@@ -34,7 +34,7 @@
             <hr>
             <div class="media" th:each="question:${pagination.data}">
                 <div class="media-left">
-                    <a href="#">
+                    <a th:href="${'/user/'+question.user.id}">
                         <img class="media-object img-rounded" th:src="${question.user.avatarUrl}">
 <!--                        <img class="media-object img-rounded" alt="..." src="https://docs.spring.io/spring-boot/docs/1.5.16.RELEASE/reference/html/images/tip.png">-->
                     </a>

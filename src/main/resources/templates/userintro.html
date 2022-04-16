@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户介绍</title>
+    <!--    <head th:insert="~{import :: head}"></head>-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/js/jquery-3.4.1.min.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/community.js" type="application/javascript"></script>
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<div class="col-md-4">
+    <img th:src="${user.avatarUrl}" alt="/images/default-avatar.png" class="img-circle center-block" style="width: 200px; height: 200px;margin-top: 20%">
+</div>
+
+<div class="col-md-4">
+    <div style="margin-top: 20%">
+        <div class="form-group">
+            <h3>昵称</h3>
+            <h3 class="media-heading">
+                <span th:text="${user.name}"></span>
+            </h3>
+            <h3>个人简介</h3>
+            <h3 class="media-heading">
+                <span th:text="${user.bio}"></span>
+            </h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>
