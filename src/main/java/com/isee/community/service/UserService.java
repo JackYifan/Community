@@ -14,7 +14,7 @@ public class UserService extends ServiceImpl<UserMapper,User> {
 
     public void createOrUpdate(User user) {
         //从数据库中查询出的用户
-        User dbUser = userMapper.findByAccountId(user.getAccountId());
+        User dbUser = userMapper.findById(user.getId());
         if(dbUser==null){
             //数据库中没有找到，新用户直接插入数据库 id自增
             user.setGmtCreate(System.currentTimeMillis());

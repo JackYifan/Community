@@ -40,9 +40,11 @@ public class UserController {
     @RequestMapping("/updateInfo")
     public String updateInfo(@RequestParam(value = "avatar") MultipartFile file,
                              String username, String bio, Model model, HttpServletRequest request){
-        FileDTO fileDTO = fileService.upload(file);
         User user = (User) request.getSession().getAttribute("user");
-        user.setAvatarUrl(fileDTO.getUrl());
+        if(file.getSize()!=0){
+            FileDTO fileDTO = fileService.upload(file);
+            user.setAvatarUrl(fileDTO.getUrl());
+        }
         user.setName(username);
         user.setBio(bio);
         userService.updateById(user);
