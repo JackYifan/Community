@@ -180,7 +180,7 @@ function thumbComments(e) {
 function chat(e) {
     // debugger;
     var userName = e.getAttribute("data-user");
-    window.location.href="http://47.103.125.27:8082?user="+userName
+    window.location.href="http://localhost:8082?user="+userName
 
 
 }

@@ -1,5 +1,6 @@
 package com.isee.community.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.isee.community.dto.FileDTO;
 import com.isee.community.model.User;
 import com.isee.community.service.FileService;
@@ -7,10 +8,7 @@ import com.isee.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Author Yifan Wu
  * Date on 2022/4/15  21:47
  */
+@CrossOrigin(origins = "*",allowCredentials="true",allowedHeaders = "",methods = {})
 @Controller
 public class UserController {
 
@@ -60,5 +59,13 @@ public class UserController {
         model.addAttribute("user",user);
         return "userintro";
 
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/username/{username}")
+    public User getUserByName(@PathVariable("username")String username){
+        User user = userService.getOne(new QueryWrapper<User>().eq("name", username));
+        return user;
     }
 }
