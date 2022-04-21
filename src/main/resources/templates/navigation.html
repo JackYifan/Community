@@ -55,13 +55,24 @@
                             <li><a href="/logout">退出登录</a></li>
                         </ul>
                     </li>
-                    <li th:if="${session.user == null}">
-<!--                        <a href="https://github.com/login/oauth/authorize?client_id=541bf8d226524d44930a&redirect_uri=localhost:8887/callback&scope=user&state=1">-->
-<!--                            登录-->
-<!--                        </a>-->
-                        <a href="/loginpage">
-                            登录
+                    <li th:if="${session.user == null}" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
+                            <span>登录</span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="https://github.com/login/oauth/authorize?client_id=541bf8d226524d44930a&redirect_uri=http://localhost:8887/callback&scope=user&state=1">
+                                    Github登录
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/loginpage">
+                                    账号密码登录
+                                </a>
+                            </li>
+                        </ul>
+
                     </li>
 
                 </ul>
