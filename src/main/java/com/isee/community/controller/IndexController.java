@@ -47,10 +47,10 @@ public class IndexController {
                         @RequestParam(name="search",required = false)String search){
         //根据request中的cookie信息查询数据库,以通过拦截器完成
         PaginationDTO pagination = questionService.list(search,page,size);
-        WeatherVO weather = weatherService.getWeather();
+        // WeatherVO weather = new WeatherVO();
         model.addAttribute("pagination",pagination);
         model.addAttribute("search",search);
-        model.addAttribute("weather",weather);
+        // model.addAttribute("weather",weather);
         return "index";
     }
 
