@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isee.community.mapper.UserMapper">
+    <update id="update">
+        update user set name = #{name},token = #{token},gmt_modified = #{gmtModified},avatar_url = #{avatarUrl} where id = #{id}
+    </update>
+
+
+    <select id="findByToken" resultType="com.isee.community.model.User">
+        select * from user where token = #{token}
+    </select>
+    <select id="findById" resultType="com.isee.community.model.User">
+        select * from user where id = #{id}
+    </select>
+    <select id="findByAccountId" resultType="com.isee.community.model.User">
+        select * from user where account_id = #{accountId}
+    </select>
+    <select id="findByUsername" resultType="com.isee.community.model.User">
+        select * from user where name = #{name}
+    </select>
+</mapper>

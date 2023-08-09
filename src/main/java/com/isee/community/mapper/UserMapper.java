@@ -12,24 +12,20 @@ public interface UserMapper extends BaseMapper<User> {
 //    public void insert(User user);
 
     //参数不是类需要用@Param指定
-    @Select("select * from user where token = #{token}")
+    // @Select("select * from user where token = #{token}")
     User findByToken(@Param("token") String token);
 
-    @Select("select * from user where id = #{id}")
+    // @Select("select * from user where id = #{id}")
     User findById(@Param("id") Long id);
 
-    @Select("select * from user where account_id = #{accountId}")
+    // @Select("select * from user where account_id = #{accountId}")
     User findByAccountId(@Param("accountId") String accountId);
 
-    @Select("select * from user where name = #{name}")
+    // @Select("select * from user where name = #{name}")
     User findByUsername(@Param("name") String name);
 
-    @Update("update user set name = #{name},token = #{token},gmt_modified = #{gmtModified},avatar_url = #{avatarUrl} where id = #{id}")
+    //@Update("update user set name = #{name},token = #{token},gmt_modified = #{gmtModified},avatar_url = #{avatarUrl} where id = #{id}")
     void update(User dbUser);
 
-    @Select("SELECT id,title,tag FROM question tag \n" +
-            "WHERE\n" +
-            "tag REGEXP 'Springboot|Spring|Java'\n" +
-            "AND id != 102")
-    void selectRelated();
+
 }

@@ -3,10 +3,9 @@
 <mapper namespace="com.isee.community.mapper.CommentMapper">
 
     <update id="incCommentCount" parameterType="com.isee.community.model.Comment">
-    update comment
-    set
-    comment_count = comment_count + #{commentCount}
-    where id = #{id}
-  </update>
+        update comment
+        set comment_count = comment_count + #{commentCount}
+        where id = #{id}
+    </update>
 
 </mapper>

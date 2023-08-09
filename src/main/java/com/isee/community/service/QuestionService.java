@@ -5,7 +5,6 @@ import com.isee.community.dto.QuestionDTO;
 import com.isee.community.dto.QuestionQueryDTO;
 import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.exception.CustomizeException;
-import com.isee.community.mapper.QuestionExtMapper;
 import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.Question;
@@ -28,7 +27,7 @@ public class QuestionService {
     private UserMapper userMapper;
 
     @Autowired
-    private QuestionExtMapper questionExtMapper;
+    private QuestionMapper questionExtMapper;
 
     /**
      * 查询所有的问题并分页显示
@@ -126,7 +125,7 @@ public class QuestionService {
             question.setViewCount(0);
             question.setLikeCount(0);
             question.setCommentCount(0);
-            questionMapper.create(question);
+            questionMapper.insert(question);
         }else{
             //只需要修改修改的时间
             question.setGmtModified(question.getGmtCreate());

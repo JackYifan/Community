@@ -10,6 +10,7 @@
     <script src="/js/jquery-3.4.1.min.js" type="application/javascript"></script>
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
     <script src="/js/community.js" type="application/javascript"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <script type="application/javascript">
     window.onload = function () {
@@ -20,12 +21,39 @@
         }
     }
 </script>
-
+<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 
 <body>
 
 
 <div th:insert="navigation :: nav"></div>
+
+<!--<div id="app">-->
+<!--    <div>-->
+<!--        {{info}}-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script type = "text/javascript">-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data () {-->
+<!--            return {-->
+<!--                info: null-->
+<!--            }-->
+<!--        },-->
+<!--        mounted() {-->
+<!--            axios.get('/test')-->
+<!--                .then(response => {-->
+<!--                    this.info = response.data.name;-->
+<!--                    console.log(this.message)-->
+<!--                }).catch(function (error) { // 请求失败处理-->
+<!--                    console.log(error);-->
+<!--                });-->
+
+<!--        }-->
+<!--    })-->
+<!--</script>-->
 
 <div class="container-fluid main">
     <div class="row">

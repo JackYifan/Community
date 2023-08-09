@@ -2,7 +2,7 @@ package com.isee.community;
 
 
 
-import com.isee.community.mapper.QuestionExtMapper;
+import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.model.Question;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ public class CommunityApplicationTest {
 
 
     @Autowired
-    private QuestionExtMapper questionExtMapper;
+    private QuestionMapper questionExtMapper;
     @Test
     public void contextLoads() {
         Question question = new Question();

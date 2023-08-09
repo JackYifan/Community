@@ -68,4 +68,12 @@ public class UserController {
         User user = userService.getOne(new QueryWrapper<User>().eq("name", username));
         return user;
     }
+
+    @ResponseBody
+    @RequestMapping("/test")
+    public User test(){
+        User user = new User();
+        user.setName("Alice");
+        return user;
+    }
 }
