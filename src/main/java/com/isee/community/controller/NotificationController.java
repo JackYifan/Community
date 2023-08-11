@@ -2,7 +2,6 @@ package com.isee.community.controller;
 
 import com.isee.community.dto.NotificationDTO;
 import com.isee.community.enums.NotificationTypeEnum;
-import com.isee.community.model.Notification;
 import com.isee.community.model.User;
 import com.isee.community.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
-package com.isee.community.service;
+package com.isee.community.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.isee.community.model.Weather;
@@ -12,15 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @Author Yifan Wu
  * Date on 2022/3/20  22:22
  */
 @Service
-public class WeatherService {
+public class WeatherServiceImpl {
     //http://47.103.125.27:8081/weather
     public WeatherVO getWeather(){
         WeatherVO weatherVO = new WeatherVO();
@@ -62,8 +59,8 @@ public class WeatherService {
 
     }
 
-    @Test
-    public void test(){
-        getWeather();
-    }
+    // @Test
+    // public void test(){
+    //     getWeather();
+    // }
 }

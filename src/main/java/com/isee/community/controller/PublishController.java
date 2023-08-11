@@ -2,7 +2,6 @@ package com.isee.community.controller;
 
 import com.isee.community.cache.TagCache;
 import com.isee.community.dto.QuestionDTO;
-import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.Question;
 import com.isee.community.model.User;

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.isee.community.dto.FileDTO;
 import com.isee.community.model.User;
 import com.isee.community.service.FileService;
-import com.isee.community.service.UserService;
+import com.isee.community.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @Autowired
     private FileService fileService;
@@ -47,7 +47,7 @@ public class UserController {
         }
         user.setName(username);
         user.setBio(bio);
-        userService.updateById(user);
+        userServiceImpl.updateById(user);
         model.addAttribute("user",user);
         return "userinfo";
     }
@@ -55,7 +55,7 @@ public class UserController {
     @RequestMapping("/user/{userId}")
     public String userIntro(@PathVariable(name = "userId")Long id,
                                    Model model){
-        User user = userService.getById(id);
+        User user = userServiceImpl.getById(id);
         model.addAttribute("user",user);
         return "userintro";
 
@@ -65,7 +65,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/username/{username}")
     public User getUserByName(@PathVariable("username")String username){
-        User user = userService.getOne(new QueryWrapper<User>().eq("name", username));
+        User user = userServiceImpl.getOne(new QueryWrapper<User>().eq("name", username));
         return user;
     }
 

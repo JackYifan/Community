@@ -1,26 +1,16 @@
 package com.isee.community.controller;
 
-import com.alibaba.fastjson.JSONArray;
 import com.isee.community.dto.PaginationDTO;
-import com.isee.community.dto.QuestionDTO;
-import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.mapper.UserMapper;
-import com.isee.community.model.User;
-import com.isee.community.model.Weather;
 import com.isee.community.service.QuestionService;
-import com.isee.community.service.WeatherService;
-import com.isee.community.vo.WeatherVO;
-import org.springframework.beans.BeanUtils;
+import com.isee.community.service.impl.WeatherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class IndexController {
@@ -32,7 +22,7 @@ public class IndexController {
     private QuestionService questionService;
 
     @Autowired
-    private WeatherService weatherService;
+    private WeatherServiceImpl weatherServiceImpl;
 
     /**
      * 检验是否已经登录，若登录获得用户信息并存储在session中

@@ -1,11 +1,9 @@
 package com.isee.community.controller;
 
 import com.isee.community.dto.PaginationDTO;
-import com.isee.community.mapper.QuestionMapper;
 import com.isee.community.model.User;
 import com.isee.community.service.NotificationService;
 import com.isee.community.service.QuestionService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

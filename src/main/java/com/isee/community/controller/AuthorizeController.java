@@ -2,7 +2,6 @@ package com.isee.community.controller;
 
 import com.isee.community.dto.AccesstokenDTO;
 import com.isee.community.dto.GithubUser;
-import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.User;
 import com.isee.community.provider.GithubProvider;
 import com.isee.community.service.UserService;

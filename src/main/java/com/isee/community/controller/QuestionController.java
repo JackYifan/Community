@@ -3,17 +3,15 @@ package com.isee.community.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.isee.community.dto.CommentDTO;
 import com.isee.community.dto.QuestionDTO;
-import com.isee.community.dto.ResultDTO;
 import com.isee.community.enums.CommentTypeEnum;
 import com.isee.community.enums.NotificationTypeEnum;
-import com.isee.community.exception.CustomizeErrorCode;
 import com.isee.community.model.Comment;
 import com.isee.community.model.Thumb;
 import com.isee.community.model.User;
-import com.isee.community.service.CommentService;
 import com.isee.community.service.QuestionService;
-import com.isee.community.service.ThumbService;
 import com.isee.community.service.UserService;
+import com.isee.community.service.impl.CommentServiceImpl;
+import com.isee.community.service.impl.ThumbServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,10 +27,10 @@ public class QuestionController {
     private QuestionService questionService;
 
     @Autowired
-    private CommentService commentService;
+    private CommentServiceImpl commentServiceImpl;
 
     @Autowired
-    private ThumbService thumbService;
+    private ThumbServiceImpl thumbServiceImpl;
 
     @Autowired
     private UserService userService;
@@ -45,7 +43,7 @@ public class QuestionController {
         //查出该问题的所有相关问题
         List<QuestionDTO> relatedQuestions = questionService.selectRelated(questionDTO);
         //查出该问题的评论列表
-        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION,currentUser);
+        List<CommentDTO> comments = commentServiceImpl.listByTargetId(id, CommentTypeEnum.QUESTION,currentUser);
         //累加阅读数
         questionService.increaseView(id);
         model.addAttribute("question",questionDTO);
@@ -62,14 +60,14 @@ public class QuestionController {
                         @PathVariable(name = "questionId") Long questionId){
 
         //判断是否重复点赞
-        int count = thumbService.count(
+        int count = thumbServiceImpl.count(
                 new QueryWrapper<Thumb>().eq("comment_id", commentId)
                         .eq("user_id", userId)
         );
 
         if(count>=1){
             //如果重复点赞，直接返回点赞数
-            int totalCount  = thumbService.count(
+            int totalCount  = thumbServiceImpl.count(
                     new QueryWrapper<Thumb>().eq("comment_id", commentId)
             );
             return String.valueOf(totalCount);
@@ -78,18 +76,18 @@ public class QuestionController {
         Thumb thumb = new Thumb();
         thumb.setCommentId(commentId);
         thumb.setUserId(userId);
-        thumbService.save(thumb);
-        int totalCount  = thumbService.count(
+        thumbServiceImpl.save(thumb);
+        int totalCount  = thumbServiceImpl.count(
                 new QueryWrapper<Thumb>().eq("comment_id", commentId)
         );
 
         //通知
-        Comment comment = commentService.getById(commentId);
+        Comment comment = commentServiceImpl.getById(commentId);
         QuestionDTO question = questionService.getById(questionId);
         User commentator = userService.getById(userId);
-        commentService.createNotify(comment,comment.getCommentator(),question.getTitle(),commentator.getName(), NotificationTypeEnum.THUMB_COMMENT,question.getId());
+        commentServiceImpl.createNotify(comment,comment.getCommentator(),question.getTitle(),commentator.getName(), NotificationTypeEnum.THUMB_COMMENT,question.getId());
         comment.setLikeCount(Long.valueOf(totalCount));
-        commentService.updateById(comment);
+        commentServiceImpl.updateById(comment);
 
         return String.valueOf(totalCount);
     }
@@ -100,18 +98,18 @@ public class QuestionController {
                         @PathVariable(name = "userId") Long userId,
                         @PathVariable(name = "questionId") Long questionId){
 
-        Thumb thumb = thumbService.getOne(
+        Thumb thumb = thumbServiceImpl.getOne(
                 new QueryWrapper<Thumb>().eq("comment_id", commentId)
                         .eq("user_id", userId)
         );
-        thumbService.removeById(thumb.getId());
-        int totalCount  = thumbService.count(
+        thumbServiceImpl.removeById(thumb.getId());
+        int totalCount  = thumbServiceImpl.count(
                 new QueryWrapper<Thumb>().eq("comment_id", commentId)
         );
         //通知
-        Comment comment = commentService.getById(commentId);
+        Comment comment = commentServiceImpl.getById(commentId);
         comment.setLikeCount(Long.valueOf(totalCount));
-        commentService.updateById(comment);
+        commentServiceImpl.updateById(comment);
         return String.valueOf(totalCount);
     }
 }
