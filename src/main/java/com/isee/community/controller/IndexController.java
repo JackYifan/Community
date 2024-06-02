@@ -3,7 +3,6 @@ package com.isee.community.controller;
 import com.isee.community.dto.PaginationDTO;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.service.QuestionService;
-import com.isee.community.service.impl.WeatherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +19,6 @@ public class IndexController {
 
     @Autowired
     private QuestionService questionService;
-
-    @Autowired
-    private WeatherServiceImpl weatherServiceImpl;
 
     /**
      * 检验是否已经登录，若登录获得用户信息并存储在session中
