@@ -1,5 +1,8 @@
 package com.isee.community.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.isee.community.dto.PaginationDTO;
 import com.isee.community.dto.QuestionDTO;
 import com.isee.community.dto.QuestionQueryDTO;
@@ -20,7 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class QuestionServiceImpl implements QuestionService {
+public class QuestionServiceImpl extends ServiceImpl<QuestionMapper,Question> implements QuestionService {
 
     @Autowired
     private QuestionMapper questionMapper;
@@ -176,4 +179,23 @@ public class QuestionServiceImpl implements QuestionService {
                 .collect(Collectors.toList());
         return questionDTOS;
     }
+
+    @Override
+    public IPage<QuestionDTO> list(Integer page, Integer size) {
+        IPage<Question> questionIPage = questionMapper.selectPage(new Page<>(page, size), null);
+        IPage<QuestionDTO> questionDTOIPage = new Page<>();
+        BeanUtils.copyProperties(questionIPage,questionDTOIPage);
+        List<QuestionDTO> questionDTOList = new ArrayList<>();
+        //遍历所有问题并匹配问题提出者
+        for(Question question:questionIPage.getRecords()){
+            User user = userMapper.findById(question.getCreator());
+            QuestionDTO questionDTO = new QuestionDTO();
+            BeanUtils.copyProperties(question,questionDTO);
+            questionDTO.setUser(user);
+            questionDTOList.add(questionDTO);
+        }
+        questionDTOIPage.setRecords(questionDTOList);
+        return questionDTOIPage;
+    }
+
 }
