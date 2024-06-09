@@ -1,4 +1,4 @@
-package com.isee.community.util;
+package com.isee.community.common;
 
 import org.apache.http.HttpStatus;
 

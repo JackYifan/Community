@@ -1,16 +1,21 @@
 package com.isee.community.interceptor;
 
+import cn.hutool.core.bean.BeanUtil;
+import com.isee.community.common.RedisConstants;
+import com.isee.community.dto.UserDTO;
 import com.isee.community.mapper.UserMapper;
 import com.isee.community.model.User;
 import com.isee.community.service.NotificationService;
-import com.isee.community.util.UserHolder;
+import com.isee.community.common.UserHolder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @Service
 public class SessionInterceptor implements HandlerInterceptor {
@@ -20,6 +25,9 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired
     private NotificationService notificationService;
+
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
 
     @Override
@@ -40,8 +48,12 @@ public class SessionInterceptor implements HandlerInterceptor {
             }
         }
         String token = request.getHeader("token");
-        User user = userMapper.findByToken(token);
-        UserHolder.saveUser(user);
+        Map<Object, Object> userMap = stringRedisTemplate.opsForHash().entries(RedisConstants.LOGIN_USER_KEY + token);
+        if(userMap.isEmpty()){
+            return true;
+        }
+        UserDTO userDTO = BeanUtil.fillBeanWithMap(userMap, new UserDTO(), false);
+        UserHolder.saveUser(userDTO);
         return true;
     }
 
