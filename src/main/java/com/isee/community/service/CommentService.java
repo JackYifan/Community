@@ -15,4 +15,6 @@ public interface CommentService extends IService<Comment> {
     void createNotify(Comment comment, Long receiver, String outerTitle, String notifierName, NotificationTypeEnum notificationType, Long outerId);
 
     List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type, User currentUser);
+
+    List<CommentDTO> commentTree(Long id);
 }

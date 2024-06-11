@@ -16,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -157,6 +154,36 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
 
         return commentDTOS;
 
+    }
+
+    @Override
+    public List<CommentDTO> commentTree(Long id) {
+        List<Comment> comments = commentMapper.selectList(
+                new QueryWrapper<Comment>().eq("parent_id", id)
+                        .orderByDesc("gmt_create")
+        );
+        if(comments.size()==0){
+            return new ArrayList<>();
+        }
+        Set<Long> commentators = comments.stream()
+                .map(comment -> comment.getCommentator())
+                .collect(Collectors.toSet());
+
+        HashMap<Long,User> userMap = new HashMap<>();
+        for(Long commentatorId:commentators){
+            User user = userMapper.findById(commentatorId);
+            userMap.put(commentatorId,user);
+        }
+        List<CommentDTO> commentDTOS = comments.stream()
+                .map(comment -> {
+                    CommentDTO commentDTO = new CommentDTO();
+                    BeanUtils.copyProperties(comment, commentDTO);
+                    commentDTO.setUser(userMap.get(comment.getCommentator()));
+                    commentDTO.setChildren(commentTree(comment.getId()));
+                    return commentDTO;
+                }).collect(Collectors.toList());
+
+        return commentDTOS;
     }
 
 }

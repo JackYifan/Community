@@ -3,6 +3,8 @@ package com.isee.community.dto;
 import com.isee.community.model.User;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 public class CommentDTO {
@@ -17,4 +19,5 @@ public class CommentDTO {
     private String content;
     private User user;
     private Boolean isLike;
+    List<CommentDTO> children;
 }

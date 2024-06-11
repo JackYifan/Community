@@ -1,5 +1,6 @@
 package com.isee.community.controller;
 
+import cn.hutool.crypto.SecureUtil;
 import com.isee.community.dto.AccesstokenDTO;
 import com.isee.community.dto.GithubUser;
 import com.isee.community.model.User;
@@ -94,7 +95,7 @@ public class AuthorizeController {
                         HttpServletResponse response){
 
         User user = userService.findByName(username);
-        if(!user.getPassword().equals(password)) {
+        if(!user.getPassword().equals(SecureUtil.md5(password))) {
             return "error";
         }
         String token = UUID.randomUUID().toString();
